@@ -1,0 +1,219 @@
+/* Chat.css - Web Version */
+
+.web-chat-layout {
+    display: flex;
+    background-color: #121212;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.chat-main-container {
+    flex: 1;
+    margin-right: 260px; /* Space for Sidebar */
+    display: flex;
+    background-color: #000;
+}
+
+/* Sidebar List */
+.chat-list-sidebar {
+    width: 380px;
+    background-color: #121212;
+    border-left: 1px solid #262626;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-list-header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-search-web {
+    padding: 0 20px 20px;
+}
+
+.search-bar-inner-web {
+    background: #1c1c1c;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+}
+
+.search-input-web {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Active Users Horizontal */
+.active-users-web {
+    padding: 0 20px 20px;
+}
+
+.active-scroll-web {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+}
+
+.active-user-circle-web {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.active-user-circle-web img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #3b82f6;
+    padding: 2px;
+}
+
+.online-status-web {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+    border: 2px solid #121212;
+    border-radius: 50%;
+}
+
+/* Thread List */
+.chat-item-web {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-item-web:hover, .chat-item-web.active {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.chat-avatar-web {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-info-web {
+    flex: 1;
+}
+
+.chat-top-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.user-name-web { font-weight: bold; font-size: 15px; }
+.time-web { font-size: 12px; color: #6b7280; }
+.last-msg-web { font-size: 13px; color: #9ca3af; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px; }
+
+/* Chat Window - Right Side */
+.chat-window-web {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+}
+
+.chat-window-header {
+    padding: 20px 30px;
+    background: #121212;
+    border-bottom: 1px solid #262626;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.window-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.window-status { font-size: 12px; color: #22c55e; }
+
+.chat-messages-area {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.msg-received, .msg-sent {
+    max-width: 60%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    position: relative;
+}
+
+.msg-received {
+    align-self: flex-start;
+    background: #1c1c1c;
+    border-bottom-right-radius: 4px;
+}
+
+.msg-sent {
+    align-self: flex-end;
+    background: #3b82f6;
+    border-bottom-left-radius: 4px;
+}
+
+.msg-received p, .msg-sent p { margin: 0; font-size: 15px; }
+.msg-received span, .msg-sent span { font-size: 10px; opacity: 0.6; display: block; margin-top: 5px; }
+
+/* Footer */
+.chat-input-footer {
+    padding: 20px 30px;
+    background: #121212;
+    border-top: 1px solid #262626;
+}
+
+.input-toolbar-web {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #1c1c1c;
+    padding: 8px 15px;
+    border-radius: 15px;
+}
+
+.main-chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 10px;
+}
+
+.send-btn-web {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}

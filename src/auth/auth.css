@@ -1,0 +1,339 @@
+/* auth.css - Web Version */
+
+.auth-web-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Left Hero Section */
+.auth-hero-section {
+    flex: 1.2;
+    background: linear-gradient(135deg, #1e3a8a 0%, #121212 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-left: 1px solid #262626;
+}
+.message-box {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.error-message-box {
+  background: #ffe8e8;
+  color: #b42318;
+  border: 1px solid #f5b7b1;
+}
+
+.success-message-box {
+  background: #e8fff1;
+  color: #067647;
+  border: 1px solid #a6f4c5;
+}
+
+.primary-btn-web:disabled,
+.social-btn-web:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Hide hero on small screens */
+@media (max-width: 900px) {
+    .auth-hero-section { display: none; }
+}
+
+.jomap-logo-large {
+    font-size: 80px;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.jomap-logo-large span:nth-child(1) { color: #f97316; } /* o */
+.jomap-logo-large span:nth-child(2) { color: #60a5fa; } /* a */
+
+.hero-subtitle {
+    font-size: 20px;
+    color: #9ca3af;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+/* Right Form Section */
+.auth-form-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.auth-form-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-header-web {
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.auth-header-web h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.auth-header-web p {
+    color: #6b7280;
+}
+
+/* Input Styles */
+.input-group-web {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.input-group-web label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #d1d5db;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 0 15px;
+    transition: border-color 0.3s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #3b82f6;
+}
+
+.input-wrapper input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 12px 10px;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+.input-icon {
+    color: #4b5563;
+}
+
+/* Button & Link */
+.primary-btn-web {
+    width: 100%;
+    background: #2563eb;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.switch-web {
+    text-align: center;
+    margin-top: 25px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.accent-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Add these to your existing auth.css Web Version */
+
+.forgot-web {
+    text-align: left; /* Aligns to left since container is RTL */
+    font-size: 13px;
+    color: #3b82f6;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.divider-web {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+    color: #4b5563;
+}
+
+.divider-web::before, .divider-web::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #262626;
+}
+
+.divider-web span {
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+.social-grid-web {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.social-btn-web {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.social-btn-web:hover {
+    background: #262626;
+}
+
+.social-btn-web.guest {
+    grid-column: span 2; /* Spans full width */
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+}
+
+.social-btn-web.guest:hover {
+    background: rgba(59, 130, 246, 0.2);
+}
+/* Onboarding Web Styles */
+
+.onboarding-web-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #121212;
+}
+
+.onboarding-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.8s ease-in-out;
+}
+
+.onboarding-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #121212 20%, rgba(18, 18, 18, 0.4) 100%);
+}
+
+.onboarding-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 60px;
+}
+
+.onboarding-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jomap-logo-onboarding {
+    font-size: 32px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.skip-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.onboarding-main-card {
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.slide-title {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.slide-description {
+    font-size: 20px;
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.onboarding-controls {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.dots-web {
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s;
+}
+
+.dot.active-dot {
+    background-color: #3b82f6;
+    width: 32px;
+    border-radius: 10px;
+}
+
+/* Reusing your primary button style with a slight adjustment for onboarding */
+.onboarding-main-card .primary-btn-web {
+    width: auto;
+    padding: 14px 60px;
+}

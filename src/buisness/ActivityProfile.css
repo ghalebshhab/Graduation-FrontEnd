@@ -1,0 +1,192 @@
+/* ActivityProfile.css - Web Version */
+
+.web-activity-layout {
+    display: flex;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.activity-main-web {
+    flex: 1;
+    padding: 30px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.activity-nav-web {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.back-btn-web, .share-btn-web {
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+/* Main Grid */
+.activity-grid-web {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Event Details Column */
+.event-hero-banner {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 400px;
+    margin-bottom: 30px;
+    border: 1px solid #262626;
+}
+
+.hero-img-web {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-badge-web {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #3b82f6;
+    padding: 6px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.event-title-web {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.organizer-row-web {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #9ca3af;
+    margin-bottom: 40px;
+}
+
+.mini-org-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #000;
+}
+
+.org-name-highlight {
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+.section-label-web {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.description-text-web {
+    color: #d1d5db;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* Action Sidebar */
+.action-card-web {
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    border-radius: 24px;
+    padding: 30px;
+    position: sticky;
+    top: 40px;
+}
+
+.card-title-web {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.meta-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.meta-item-web {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.meta-icon {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.meta-label {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.meta-value {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.price-tag-web {
+    border-top: 1px solid #262626;
+    padding-top: 25px;
+    margin-bottom: 25px;
+}
+
+.price-amount-web {
+    font-size: 36px;
+    font-weight: 900;
+    color: #3b82f6;
+    margin-top: 5px;
+}
+
+.price-amount-web span { font-size: 16px; color: #9ca3af; }
+
+.primary-register-btn-web {
+    width: 100%;
+    background: #2563eb;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.guarantee-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

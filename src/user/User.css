@@ -1,0 +1,230 @@
+/* User.css - Web Version */
+
+.web-profile-layout {
+    display: flex;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.profile-main-content {
+    flex: 1;
+    max-width: 800px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Header Card */
+.profile-top-card {
+    margin-bottom: 50px;
+}
+
+.profile-identity-box {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.avatar-wrapper-web {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.avatar-img-web {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #262626;
+}
+
+.edit-avatar-btn {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background: #3b82f6;
+    border: 4px solid #121212;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-details-web {
+    flex: 1;
+}
+
+.name-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.web-display-name {
+    font-size: 28px;
+    font-weight: 300; /* Modern thin font look */
+}
+
+.profile-web-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-web-primary {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-web-secondary {
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-web-icon {
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-web-icon.logout:hover { color: #ef4444; }
+
+/* Stats & Bio */
+.stats-row-web {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.web-location-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.web-bio-desc {
+    color: #d1d5db;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Tabs */
+.profile-tabs-web {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    border-top: 1px solid #262626;
+    margin-bottom: 30px;
+}
+
+.tab-item-web {
+    background: none;
+    border: none;
+    color: #6b7280;
+    padding: 15px 0;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.tab-item-web.active {
+    color: white;
+    border-top: 1px solid white;
+    margin-top: -1px;
+}
+
+/* Media Grid */
+.profile-media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.grid-post-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.grid-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.grid-post-card:hover .grid-overlay { opacity: 1; }
+
+.grid-tag { color: #3b82f6; font-weight: bold; font-size: 12px; margin-bottom: 5px; }
+
+.grid-post-placeholder {
+    aspect-ratio: 1 / 1;
+    border: 2px dashed #262626;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563;
+}
+
+/* Dynamic Feed Overlay */
+.profile-feed-web {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.empty-profile-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 20px;
+    color: #71717a;
+    gap: 12px;
+}
+
+.profile-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -1,0 +1,45 @@
+/* src/index.css */
+:root {
+  --sidebar-width: 260px;
+  --bg-dark: #121212;
+  --bg-card: #1c1c1c;
+  --primary-blue: #3b82f6;
+  --border-color: #262626;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: white;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* The wrapper that holds everything */
+.web-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Main content area that grows */
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width); /* Push content past sidebar */
+  padding: 40px;
+  max-width: 1200px;
+  margin-right: auto;
+}
+
+/* Desktop Sidebar instead of Bottom Nav */
+.desktop-sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--bg-dark);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}

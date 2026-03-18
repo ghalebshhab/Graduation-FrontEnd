@@ -1,0 +1,204 @@
+/* BusinessDashboard.css - Web Version */
+
+.web-dashboard-container {
+    display: flex;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.dashboard-main-content {
+    flex: 1;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Hero Section Styles */
+.business-hero-web {
+    position: relative;
+    height: 350px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.cover-img-web {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero-overlay-web {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #121212 10%, transparent 100%);
+}
+
+.hero-content-web {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.business-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-box-web {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    background: #000;
+    border: 2px solid #262626;
+    overflow: hidden;
+}
+
+.logo-box-web img { width: 100%; height: 100%; object-fit: cover; }
+
+.business-name-web {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.status-badge-web {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #22c55e;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.status-badge-web .dot {
+    width: 10px;
+    height: 10px;
+    background: #22c55e;
+    border-radius: 50%;
+}
+
+/* Header Buttons */
+.header-actions-web {
+    display: flex;
+    gap: 12px;
+}
+
+.action-btn-primary {
+    background: #3b82f6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn-outline {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #262626;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Grid Layout */
+.dashboard-grid-web {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+}
+
+/* Tabs */
+.tabs-nav-web {
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid #262626;
+    margin-bottom: 30px;
+}
+
+.tab-link-web {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    padding: 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-link-web.active {
+    color: #3b82f6;
+}
+
+.tab-link-web.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3b82f6;
+}
+
+/* Alert Box Web */
+.alert-box-web {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.alert-title { font-weight: bold; color: #f97316; margin-bottom: 4px; }
+.alert-desc { color: #fed7aa; font-size: 14px; margin: 0; }
+
+/* Stats Sidebar */
+.stats-sidebar-web {
+    background: #1c1c1c;
+    border: 1px solid #262626;
+    border-radius: 24px;
+    padding: 24px;
+    height: fit-content;
+}
+
+.stat-card-web {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.stat-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon-circle.yellow { background: rgba(234, 179, 8, 0.1); color: #eab308; }
+.stat-icon-circle.blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+
+.stat-label { font-size: 12px; color: #6b7280; margin: 0; }
+.stat-value { font-size: 20px; font-weight: bold; margin: 0; }
