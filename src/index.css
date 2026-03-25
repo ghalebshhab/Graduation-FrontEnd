@@ -1,45 +1,98 @@
-/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --sidebar-width: 260px;
-  --bg-dark: #121212;
-  --bg-card: #1c1c1c;
+  --sidebar-width: 280px;
+  
+  /* Premium Dark Theme Palette */
+  --bg-dark: #09090b;
+  --bg-card: rgba(24, 24, 27, 0.65);
+  --bg-card-hover: rgba(39, 39, 42, 0.8);
+  
   --primary-blue: #3b82f6;
-  --border-color: #262626;
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --primary-glow: rgba(139, 92, 246, 0.4);
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.15);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  /* Utilities */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
   margin: 0;
   background-color: var(--bg-dark);
-  color: white;
-  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-main);
+  font-family: 'Outfit', system-ui, sans-serif;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* The wrapper that holds everything */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
 .web-layout {
   display: flex;
   min-height: 100vh;
   width: 100%;
 }
 
-/* Main content area that grows */
 .main-content {
   flex: 1;
-  margin-left: var(--sidebar-width); /* Push content past sidebar */
+  margin-left: var(--sidebar-width);
   padding: 40px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-right: auto;
+  animation: fadeIn 0.5s ease-out;
 }
 
-/* Desktop Sidebar instead of Bottom Nav */
 .desktop-sidebar {
   width: var(--sidebar-width);
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
-  background-color: var(--bg-dark);
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Base Form Inputs for whole app */
+input, textarea, select {
+  font-family: 'Outfit', sans-serif;
 }

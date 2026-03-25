@@ -85,7 +85,7 @@ export const PostCard = ({ post: initialPost, currentUserId }) => {
   const [post, setPost] = useState(initialPost);
   
   // Like and Bookmark states
-  const [isLiked, setIsLiked] = useState(post.isLiked || false); // Backend should optimally return `isLiked` per user
+  const [isLiked, setIsLiked] = useState(post.likedByCurrentUser || false);
   const [likeCount, setLikeCount] = useState(post.likeCount || 0);
   const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked || false);
   const [isLikeLoading, setIsLikeLoading] = useState(false);
@@ -193,16 +193,25 @@ export const PostCard = ({ post: initialPost, currentUserId }) => {
     }
   };
 
-  const authorName = post.authorEmail ? post.authorEmail.split("@")[0] : "User";
+  const authorName = post.authorUsername || (post.authorEmail ? post.authorEmail.split("@")[0] : "User");
   const authorInitial = authorName.charAt(0).toUpperCase();
 
   return (
     <article className="post-card-web">
       <header className="post-header-web">
         <div className="post-user-web" onClick={() => navigate(`/profile/${post.authorId}`)}>
-          <div className="avatar-placeholder-web">
-            {authorInitial}
-          </div>
+          {post.authorProfileImageUrl ? (
+            <img 
+              src={post.authorProfileImageUrl} 
+              alt={authorName} 
+              className="avatar-placeholder-web"
+              style={{ objectFit: 'cover' }}
+            />
+          ) : (
+            <div className="avatar-placeholder-web">
+              {authorInitial}
+            </div>
+          )}
           <div className="post-user-info">
             <h4 className="username-web">{authorName}</h4>
             <span className="time-web">{timeAgo(post.createdAt)}</span>
@@ -272,56 +281,86 @@ export const PostCard = ({ post: initialPost, currentUserId }) => {
       </div>
 
       {showComments && (
-        <div className="comments-section-web slide-down">
-          <div className="comment-create-box-web">
-            <textarea
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Add a friendly comment..."
-              className="comment-textarea-web"
-              rows={1}
-            />
-            <button 
-              onClick={handlePostComment}
-              disabled={submittingComment || !newComment.trim()}
-              className="comment-submit-btn-web"
-            >
-              {submittingComment ? <Loader2 size={16} className="spinning-loader"/> : "Post"}
-            </button>
-          </div>
-          
-          <div className="comments-list">
-            {commentsLoading ? (
-              <div className="comments-loader"><Loader2 size={24} className="spinning-loader"/></div>
-            ) : comments.length === 0 ? (
-              <p className="no-comments-text">No comments yet. Be the first!</p>
-            ) : (
-              comments.map(comment => (
-                <div key={comment.id} className="comment-card-web animate-fade-in">
-                  <div className="comment-avatar-web">
-                    {(comment.username || "U").charAt(0).toUpperCase()}
-                  </div>
-                  <div className="comment-body-web">
-                    <div className="comment-top-web">
-                      <span className="comment-username-web">{comment.username || "User"}</span>
-                      {String(comment.userId) === String(currentUserId) && (
-                        <button 
-                          onClick={() => initiateDeleteComment(comment.id)} 
-                          className="icon-btn-ghost text-red-500 hover-red"
-                          title="Delete Comment"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      )}
-                    </div>
-                    <p className="comment-content-web">{comment.content}</p>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+  <div className="comments-section-web slide-down">
+    <div className="comment-create-box-web">
+      <textarea
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
+        placeholder="Add a friendly comment..."
+        className="comment-textarea-web"
+        rows={1}
+      />
+      <button 
+        onClick={handlePostComment}
+        disabled={submittingComment || !newComment.trim()}
+        className="comment-submit-btn-web"
+      >
+        {submittingComment ? <Loader2 size={16} className="spinning-loader"/> : "Post"}
+      </button>
+    </div>
+    
+    <div className="comments-list">
+      {commentsLoading ? (
+        <div className="comments-loader">
+          <Loader2 size={24} className="spinning-loader"/>
         </div>
+      ) : comments.length === 0 ? (
+        <p className="no-comments-text">No comments yet. Be the first!</p>
+      ) : (
+        comments.map(comment => {
+          const commentUserName = comment.username || "User";
+          const commentUserInitial = commentUserName.charAt(0).toUpperCase();
+
+          return (
+            <div key={comment.id} className="comment-card-web animate-fade-in">
+              <div
+                className="comment-avatar-web"
+                onClick={() => navigate(`/profile/${comment.userId}`)}
+                style={{ cursor: "pointer", overflow: "hidden" }}
+                title={`Go to ${commentUserName}'s profile`}
+              >
+                {comment.userProfileImageUrl ? (
+                  <img
+                    src={comment.userProfileImageUrl}
+                    alt={commentUserName}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                ) : (
+                  commentUserInitial
+                )}
+              </div>
+
+              <div className="comment-body-web">
+                <div className="comment-top-web">
+                  <span
+                    className="comment-username-web"
+                    onClick={() => navigate(`/profile/${comment.userId}`)}
+                    style={{ cursor: "pointer" }}
+                    title={`Go to ${commentUserName}'s profile`}
+                  >
+                    {commentUserName}
+                  </span>
+
+                  {String(comment.userId) === String(currentUserId) && (
+                    <button 
+                      onClick={() => initiateDeleteComment(comment.id)} 
+                      className="icon-btn-ghost text-red-500 hover-red"
+                      title="Delete Comment"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  )}
+                </div>
+
+                <p className="comment-content-web">{comment.content}</p>
+              </div>
+            </div>
+          );
+        })
       )}
+    </div>
+  </div>
+)}
 
       {/* Delete Comment Dialog */}
       {commentToDelete && (

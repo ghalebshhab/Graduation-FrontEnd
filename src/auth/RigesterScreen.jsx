@@ -4,13 +4,11 @@ import { FaUser, FaEnvelope, FaLock, FaPhone } from "react-icons/fa";
 import axios from "axios";
 import "./auth.css";
 
-const API_BASE = "http://localhost:8080";
-
 const Register = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     phoneNumber: "",
     password: "",
@@ -87,19 +85,19 @@ const Register = () => {
   };
 
   const validateForm = () => {
-    const name = formData.name.trim();
+    const username = formData.username.trim();
     const email = formData.email.trim().toLowerCase();
     const phoneNumber = formData.phoneNumber.trim();
     const password = formData.password.trim();
     const confirmPassword = formData.confirmPassword.trim();
 
-    if (!name || !email || !phoneNumber || !password || !confirmPassword) {
+    if (!username || !email || !phoneNumber || !password || !confirmPassword) {
       setErrorMessage("Please fill in all fields");
       return false;
     }
 
-    if (name.length < 3) {
-      setErrorMessage("Name must be at least 3 characters");
+    if (username.length < 3) {
+      setErrorMessage("Username must be at least 3 characters");
       return false;
     }
 
@@ -109,7 +107,6 @@ const Register = () => {
       return false;
     }
 
-    // If your backend expects Jordan format:
     const phoneRegex = /^\+9627\d{8}$/;
     if (!phoneRegex.test(phoneNumber)) {
       setErrorMessage("Phone number must be like +9627XXXXXXXX");
@@ -141,14 +138,14 @@ const Register = () => {
 
     try {
       const payload = {
+        username: formData.username.trim(),
         email: formData.email.trim().toLowerCase(),
         password: formData.password,
-        username: formData.name.trim(),
         phoneNumber: formData.phoneNumber.trim(),
       };
 
       const response = await axios.post(
-        `${API_BASE}/api/auth/register`,
+        `/api/auth/register`,
         payload,
         {
           headers: {
@@ -209,15 +206,15 @@ const Register = () => {
             )}
 
             <div className="input-group-web">
-              <label>الاسم الكامل</label>
+              <label>اسم المستخدم</label>
               <div className="input-wrapper">
                 <FaUser className="input-icon" />
                 <input
                   type="text"
-                  name="name"
-                  placeholder="أدخل اسمك الكامل"
+                  name="username"
+                  placeholder="أدخل اسم المستخدم"
                   required
-                  value={formData.name}
+                  value={formData.username}
                   onChange={handleChange}
                 />
               </div>

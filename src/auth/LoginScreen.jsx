@@ -10,8 +10,6 @@ import {
 import axios from "axios";
 import "./auth.css";
 
-const API_BASE = "http://localhost:8080";
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -113,7 +111,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${API_BASE}/api/auth/login`,
+        `/api/auth/login`,
         {
           email: emailInput.trim().toLowerCase(),
           password: passwordInput,
@@ -136,11 +134,11 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("tokenType", "Bearer");
       localStorage.setItem("authToken", `Bearer ${data.token}`);
-      localStorage.setItem("userId", data.userId?.toString() || "");
+      localStorage.setItem("userId", data.id?.toString() || "");
       localStorage.setItem("userEmail", email);
 
       try {
-        const debugRes = await axios.get(`${API_BASE}/api/auth/debug/user?email=${email}`);
+        const debugRes = await axios.get(`/api/auth/debug/user?email=${email}`);
         if (debugRes.data && debugRes.data.exists) {
           localStorage.setItem("username", debugRes.data.name || "");
           localStorage.setItem("role", debugRes.data.role || "");
