@@ -1,169 +1,80 @@
-import React, { useMemo } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import {
-  House,
-  Compass,
-  Images,
-  SquarePlus,
-  User,
-  Bell,
-  Bookmark,
-  Settings,
-  LogOut,
-  MapPinned,
-  Menu,
-  X,
-} from "lucide-react";
-import "./Sidebar.css";
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FaHome, FaMapMarkedAlt, FaPlusSquare, FaCommentDots, FaUser, FaBriefcase, FaSignOutAlt } from 'react-icons/fa';
 
-export default function Sidebar() {
+const Sidebar = () => {
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userId") || "me";
 
-  const username = localStorage.getItem("username") || "Guest";
-  const email = localStorage.getItem("userEmail") || "guest@jomap.com";
-  const role = localStorage.getItem("role") || "VISITOR";
-  const isLoggedIn = !!localStorage.getItem("authToken");
-
-  const initials = useMemo(() => {
-    return username?.trim()?.charAt(0)?.toUpperCase() || "G";
-  }, [username]);
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const closeMobileMenu = () => setMobileOpen(false);
+  const navItems = [
+    { path: '/home', name: 'الرئيسية', icon: <FaHome size={22} /> },
+    { path: '/map', name: 'الخريطة', icon: <FaMapMarkedAlt size={22} /> },
+    { path: '/create-post', name: 'نشر', icon: <FaPlusSquare size={22} /> },
+    { path: '/chat', name: 'الرسائل', icon: <FaCommentDots size={22} /> },
+    { path: '/business', name: 'الأعمال', icon: <FaBriefcase size={22} /> },
+    { path: `/profile/${userId}`, name: 'حسابي', icon: <FaUser size={22} /> },
+  ];
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("tokenType");
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("username");
-    localStorage.removeItem("role");
-
-    closeMobileMenu();
-    navigate("/login");
-  };
-
-  const mainLinks = [
-    { to: "/", label: "Home", icon: House },
-    { to: "/community", label: "Community", icon: Compass },
-    { to: "/stories", label: "Stories", icon: Images },
-    { to: "/create-post", label: "Create Post", icon: SquarePlus },
-    { to: "/saved", label: "Saved", icon: Bookmark },
-    { to: "/notifications", label: "Notifications", icon: Bell },
-  ];
-
-  const secondaryLinks = [
-    { to: "/profile", label: "Profile", icon: User },
-    { to: "/settings", label: "Settings", icon: Settings },
-  ];
-
-  const renderNavLink = (item) => {
-    const Icon = item.icon;
-
-    return (
-      <NavLink
-        key={item.to}
-        to={item.to}
-        end={item.to === "/"}
-        className={({ isActive }) =>
-          `sidebar-link ${isActive ? "active" : ""}`
-        }
-        onClick={closeMobileMenu}
-      >
-        <span className="sidebar-link-icon">
-          <Icon size={19} />
-        </span>
-        <span className="sidebar-link-text">{item.label}</span>
-      </NavLink>
-    );
+    localStorage.clear();
+    navigate('/');
   };
 
   return (
     <>
-      <button
-        className="mobile-menu-toggle"
-        onClick={() => setMobileOpen(true)}
-        aria-label="Open menu"
-      >
-        <Menu size={22} />
-      </button>
-
-      {mobileOpen && (
-        <div className="sidebar-backdrop" onClick={closeMobileMenu}></div>
-      )}
-
-      <aside className={`sidebar-shell ${mobileOpen ? "open" : ""}`}>
-        <div className="sidebar-top">
-          <div className="brand-block" onClick={() => navigate("/")}>
-            <div className="brand-logo">
-              <MapPinned size={22} />
-            </div>
-            <div className="brand-texts">
-              <h2>JoMap</h2>
-              <span>Discover Jordan</span>
-            </div>
-          </div>
-
-          <button
-            className="mobile-close-btn"
-            onClick={closeMobileMenu}
-            aria-label="Close menu"
-          >
-            <X size={20} />
-          </button>
+      {/* --- DESKTOP SIDEBAR (Hidden on Mobile) --- */}
+      <div className="hidden md:flex flex-col w-64 h-screen bg-white border-l border-gray-200 sticky top-0 px-4 py-8 shadow-sm">
+        <div className="mb-10 text-center">
+          <h1 className="text-4xl font-extrabold text-blue-600 tracking-tight">JoMap</h1>
         </div>
 
-        <div className="sidebar-user-card">
-          <div className="sidebar-avatar">{initials}</div>
-
-          <div className="sidebar-user-info">
-            <h4>{username}</h4>
-            <p>{email}</p>
-            <span className="sidebar-role-badge">{role}</span>
-          </div>
-        </div>
-
-        <nav className="sidebar-nav">
-          <div className="sidebar-section-title">Main</div>
-          {mainLinks.map(renderNavLink)}
-
-          <div className="sidebar-section-title secondary">Account</div>
-          {secondaryLinks.map(renderNavLink)}
+        <nav className="flex-1 flex flex-col gap-2">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
+                  isActive
+                    ? 'bg-blue-50 text-blue-600 shadow-sm'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-500'
+                }`
+              }
+            >
+              {item.icon}
+              <span className="text-lg">{item.name}</span>
+            </NavLink>
+          ))}
         </nav>
 
-        <div className="sidebar-bottom">
-          {isLoggedIn ? (
-            <button className="sidebar-logout-btn" onClick={handleLogout}>
-              <LogOut size={18} />
-              <span>Logout</span>
-            </button>
-          ) : (
-            <div className="sidebar-auth-actions">
-              <button
-                className="sidebar-login-btn"
-                onClick={() => {
-                  closeMobileMenu();
-                  navigate("/login");
-                }}
-              >
-                Login
-              </button>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-4 px-4 py-3 mt-auto text-red-500 hover:bg-red-50 rounded-xl transition-colors font-medium"
+        >
+          <FaSignOutAlt size={22} />
+          <span className="text-lg">تسجيل الخروج</span>
+        </button>
+      </div>
 
-              <button
-                className="sidebar-register-btn"
-                onClick={() => {
-                  closeMobileMenu();
-                  navigate("/register");
-                }}
-              >
-                Register
-              </button>
-            </div>
-          )}
-        </div>
-      </aside>
+      {/* --- MOBILE BOTTOM NAVIGATION (Hidden on Desktop) --- */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50 px-2 py-3 flex justify-around items-center">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex flex-col items-center gap-1 transition-colors ${
+                isActive ? 'text-blue-600 scale-110' : 'text-gray-400 hover:text-gray-600'
+              }`
+            }
+          >
+            {item.icon}
+            <span className="text-[10px] font-medium">{item.name}</span>
+          </NavLink>
+        ))}
+      </div>
     </>
   );
-}
+};
+
+export default Sidebar;
